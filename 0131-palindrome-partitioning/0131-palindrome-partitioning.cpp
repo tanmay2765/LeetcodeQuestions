@@ -1,8 +1,11 @@
 class Solution {
 public:
-    bool pal(const string& s, int l, int r) {
-        while (l < r) {
-            if (s[l++] != s[r--]) return false;
+    bool pal(const string& s, int l, int h) {
+        while(l<h){
+            if(s[l]!=s[h]) return false;
+                l++;
+                h--;
+            
         }
         return true;
     }
@@ -15,7 +18,7 @@ public:
 
         for (int i = start; i < s.size(); i++) {
             if (pal(s, start, i)) {
-                temp.push_back(s.substr(start, i - start + 1)); // correct usage
+                temp.push_back(s.substr(start, i - start + 1));
                 fun(s, res, temp, i + 1);
                 temp.pop_back();
             }
