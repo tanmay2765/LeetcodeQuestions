@@ -11,15 +11,9 @@
  */
 class Solution {
 public:
-    void postorder(TreeNode* root,vector<int>& res){
-        if(!root) return;
-        postorder(root->left,res);
-        postorder(root->right,res);
-        res.push_back(root->val);
-    }
     int countNodes(TreeNode* root) {
-        vector<int> res;
-        postorder(root,res);
-        return res.size();
+        int c;
+        if(!root) return 0;
+        return 1+countNodes(root->left)+countNodes(root->right);
     }
 };
