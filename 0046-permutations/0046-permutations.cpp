@@ -1,26 +1,29 @@
-#include <vector>
-#include <algorithm>
-using namespace std;
-
 class Solution {
 public:
-    void fun(vector<int>& arr, vector<vector<int>>& res, vector<int>& temp, int start) {
-        if (temp.size() == arr.size()) { 
+    void fun(vector<int>& arr, vector<vector<int>>& res, vector<int>& temp, vector<bool>& used) {
+        if (temp.size() == arr.size()) {
             res.push_back(temp);
-            return; // Important to return when a full permutation is formed
+            return;
         }
+
         for (int i = 0; i < arr.size(); i++) {
-            if (find(temp.begin(), temp.end(), arr[i]) != temp.end()) continue;
+            if (used[i]) continue;
+
+            used[i] = true;
             temp.push_back(arr[i]);
-            fun(arr, res, temp, i + 1);
+
+            fun(arr, res, temp, used);
+
             temp.pop_back();
+            used[i] = false;
         }
     }
 
     vector<vector<int>> permute(vector<int>& nums) {
         vector<vector<int>> res;
         vector<int> temp;
-        fun(nums, res, temp, 0);
+        vector<bool> used(nums.size(), false);
+        fun(nums, res, temp, used);
         return res;
     }
 };
