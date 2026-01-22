@@ -5,7 +5,7 @@ public:
         int curr=nums[0];
         for(int i=1;i<nums.size();i++){
             curr=max(nums[i],curr+nums[i]);
-            maxs=max(maxs,curr);
+            maxs=max(curr,maxs);
         }
         return maxs;
     }
