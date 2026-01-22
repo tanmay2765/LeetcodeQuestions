@@ -14,7 +14,7 @@ public:
         }
         for(int i=0;i<n;i++){
             int w=min(lmax[i],rmax[i])-h[i];
-            if(w>0) s+=w;
+            s+=w;
         }
         return s;
     }
