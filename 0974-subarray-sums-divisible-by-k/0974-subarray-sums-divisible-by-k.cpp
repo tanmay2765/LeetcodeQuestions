@@ -1,16 +1,16 @@
 class Solution {
 public:
-    int subarraysDivByK(vector<int>& A, int K) {
-        unordered_map<int,int> freq;
-        freq[0] = 1;
-        int s = 0, cnt = 0;
-        for (int x : A) {
-            s += x;
-            int r = s % K;
-            if (r < 0) r += K;
-            cnt += freq[r];
-            freq[r] += 1;
+    int subarraysDivByK(vector<int>& nums, int k) {
+        unordered_map<int,int> map;
+        int c=0,s=0;
+        map[0]=1;
+        for(int i=0;i<nums.size();i++){
+            s+=nums[i];
+            int r=s%k;
+            if(r<0) r+=k;
+            c+=map[r];
+            map[r]++;
         }
-        return cnt;
+        return c;
     }
 };
