@@ -5,11 +5,11 @@ public:
         int l=0,m=0,h=n-1;
         while(h>=m){
             if(nums[m]==0){
-                swap(nums[l], nums[m]);
+                swap(nums[l],nums[m]);
                 l++;
                 m++;
             }else if(nums[m]==1) m++;
-            else {
+            else{
                 swap(nums[m],nums[h]);
                 h--;
             }
