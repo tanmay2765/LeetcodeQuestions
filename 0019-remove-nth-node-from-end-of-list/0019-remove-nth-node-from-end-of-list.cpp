@@ -16,14 +16,12 @@ public:
         for(int i=0;i<n;i++){
             f=f->next;
         }
-        if(f==NULL){
-            return head->next;
-        }
-        while(f!=NULL && f->next!=NULL){
+        if(f==NULL) return head->next;
+        while(f!=nullptr && f->next!=nullptr){
             s=s->next;
             f=f->next;
         }
-        s->next = s->next->next;
+        s->next=s->next->next;
         return head;
     }
 };
