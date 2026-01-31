@@ -1,6 +1,6 @@
 class Solution {
 public:
-    int first(vector<int>& nums, int t) {
+    int f(vector<int>& nums, int t){
         int l=0,r=nums.size()-1;
         int a=-1;
         while(l<=r){
@@ -8,16 +8,11 @@ public:
             if(t==nums[m]){
                 a=m;
                 r=m-1;
-            }
-            else if(nums[m]<t){
-                l=m+1;
-            }else{
-                r=m-1;
-            }
-        }
-        return a;
+            }else if(nums[m]<t) l=m+1;
+            else r=m-1;
+        }return a;
     }
-    int last(vector<int>& nums, int t) {
+    int l(vector<int>& nums, int t){
         int l=0,r=nums.size()-1;
         int a=-1;
         while(l<=r){
@@ -25,16 +20,11 @@ public:
             if(t==nums[m]){
                 a=m;
                 l=m+1;
-            }
-            else if(nums[m]<t){
-                l=m+1;
-            }else{
-                r=m-1;
-            }
-        }
-        return a;
+            }else if(nums[m]<t) l=m+1;
+            else r=m-1;
+        }return a;
     }
-    vector<int> searchRange(vector<int>& nums, int t){
-            return {first(nums,t),last(nums,t)};
+    vector<int> searchRange(vector<int>& nums, int target) {
+        return {f(nums,target),l(nums,target)};
     }
 };
