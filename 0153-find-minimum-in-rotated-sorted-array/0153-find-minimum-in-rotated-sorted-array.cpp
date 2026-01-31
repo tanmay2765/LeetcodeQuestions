@@ -5,7 +5,8 @@ public:
         while(l<r){
             int m=(l+r)/2;
             if(nums[m]<nums[r]) r=m;
-            else l=m+1; 
-        }return nums[r];
+            else l=m+1;
+        }
+        return nums[r];
     }
 };
