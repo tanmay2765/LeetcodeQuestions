@@ -12,17 +12,15 @@ public:
         ListNode* s=head;
         ListNode* f=head;
         ListNode* e=head;
-        while(f!=NULL && f->next!=NULL){
+        while(f && f->next){
             s=s->next;
             f=f->next->next;
             if(s==f) break;
         }
-        if (f == NULL || f->next == NULL) return 0;
-        f=f->next;
+        if(!f || !f->next) return nullptr;
         while(e!=s){
             e=e->next;
             s=s->next;
-        }
-        return e;
+        }return e;
     }
 };
