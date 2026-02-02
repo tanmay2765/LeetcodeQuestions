@@ -14,6 +14,6 @@ public:
                 if(s[i] == ')' && top!='(' || s[i] == ']' && top!='[' || s[i] == '}' && top!='{') return false;
             }
         }
-        return sk.empty();
+        return true;
     }
 };
