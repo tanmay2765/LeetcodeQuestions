@@ -19,7 +19,7 @@ public:
             if(b){
                 b=b->next;
             }else b=headA;
-        }
-        return a;
+        }return a;
+       
     }
 };
