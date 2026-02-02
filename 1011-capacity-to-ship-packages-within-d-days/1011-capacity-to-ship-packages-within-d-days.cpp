@@ -1,7 +1,7 @@
 class Solution {
 public:
     bool sum(vector<int>& w, int d,int m){
-        int i=0,c=0,d2=0;
+        int i=0,c=0,d2=1;
         while(i<w.size()){
             if(c+w[i]>m){
                 d2++;
@@ -9,7 +9,7 @@ public:
             }else{
                 c+=w[i++];
             }
-        }return d2+1<=d;
+        }return d2<=d;
     }
 
     int shipWithinDays(vector<int>& w, int d) {
