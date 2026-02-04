@@ -11,22 +11,10 @@
  */
 class Solution {
 public:
-    void order(TreeNode* root,vector<int> &res){
-        if(!root){
-            res.push_back(INT_MIN);
-            return;
-        } 
-        order(root->left,res);
-        order(root->right,res);
-        res.push_back(root->val);
-    }
-    bool check(vector<int> res1,vector<int> res2,TreeNode* p, TreeNode* q){
-        order(p,res1);
-        order(q,res2);
-        return res1==res2;
-    }
     bool isSameTree(TreeNode* p, TreeNode* q) {
-        vector<int> res1,res2;
-        return check(res1,res2,p,q);
+        if(!p&&!q)return true;
+        if(!p||!q)return false;
+        if(p->val!=q->val) return false;
+        return isSameTree(p->left,q->left) && isSameTree(p->right,q->right);
     }
 };
