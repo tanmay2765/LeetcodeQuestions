@@ -11,16 +11,16 @@
  */
 class Solution {
 public:
-    void fun(TreeNode* root,string& s,string c){
+    string s="";
+    void fun(TreeNode* root,string c){
         if(!root) return;
         c=char('a'+root->val)+c;
-        if(!root->left && !root->right) if(c<s || s.empty()) s=c;
-        fun(root->left,s,c);
-        fun(root->right,s,c);
+        if(!root->left && !root->right && (c<s || s.empty())) s=c; 
+        fun(root->left,c);
+        fun(root->right,c);
     }
     string smallestFromLeaf(TreeNode* root) {
-        string s="";
-        fun(root,s,"");
+        fun(root,"");
         return s;
     }
 };
