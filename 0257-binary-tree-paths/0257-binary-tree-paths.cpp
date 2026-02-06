@@ -11,16 +11,17 @@
  */
 class Solution {
 public:
-    void fun(TreeNode* root,vector<string>& arr,string s){
+    vector<string> res;
+    void fun(TreeNode* root,string s){
         if(!root) return;
         s+=to_string(root->val);
-        if(!root->left && !root->right)  arr.push_back(s);
-        fun(root->left,arr,s+"->");
-        fun(root->right,arr,s+"->");
+        if(root->left || root->right) s+="->";
+        if(!root->left && !root->right) res.push_back(s);
+        fun(root->left,s);
+        fun(root->right,s);
     }
     vector<string> binaryTreePaths(TreeNode* root) {
-        vector<string> arr;
-        fun(root,arr,"");
-        return arr;
+        fun(root,"");
+        return res;
     }
 };
