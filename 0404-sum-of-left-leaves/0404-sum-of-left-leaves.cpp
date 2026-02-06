@@ -11,15 +11,15 @@
  */
 class Solution {
 public:
-    void leaf(TreeNode* root,int& sum){
+    int sum=0;
+    void fun(TreeNode* root){
         if(!root) return;
         if(root->left && !root->left->left && !root->left->right) sum+=root->left->val;
-        leaf(root->left,sum);
-        leaf(root->right,sum);
+        fun(root->left);
+        fun(root->right);
     }
     int sumOfLeftLeaves(TreeNode* root) {
-        int sum=0;
-        leaf(root,sum);
+        fun(root);
         return sum;
     }
 };
