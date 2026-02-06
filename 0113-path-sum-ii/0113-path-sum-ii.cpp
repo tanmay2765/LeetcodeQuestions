@@ -11,21 +11,18 @@
  */
 class Solution {
 public:
-    void fun(TreeNode* root,int t,int s,vector<int>temp,vector<vector<int>>& arr){
+    vector<vector<int>> res;
+    void fun(TreeNode* root, int t,int s,vector<int>temp){
         if(!root) return;
         s+=root->val;
         temp.push_back(root->val);
-        if(!root->left && !root->right){
-            if(s==t){
-                arr.push_back(temp);
-            }
-        }    
-        fun(root->left,t,s,temp,arr);
-        fun(root->right,t,s,temp,arr);
+        if(!root->left && !root->right && s==t) res.push_back(temp);
+        fun(root->left,t,s,temp);
+        fun(root->right,t,s,temp);
     }
     vector<vector<int>> pathSum(TreeNode* root, int targetSum) {
-        vector<vector<int>> arr;
-        fun(root,targetSum,0,{},arr);
-        return arr;
+        vector<int> temp;
+        fun(root,targetSum,0,temp);
+        return res;
     }
 };
