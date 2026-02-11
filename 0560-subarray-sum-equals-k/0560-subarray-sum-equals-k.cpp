@@ -8,7 +8,6 @@ public:
             s+=nums[i];
             c+=map[s-k];
             map[s]++;
-        }
-        return c;
+        }return c;
     }
 };
